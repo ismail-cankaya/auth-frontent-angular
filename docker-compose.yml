@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  auth-ui:
+    build: .
+    container_name: auth-ui
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      # <-- Backend ile aynı ağa bağlanıyor
+      - auth_network
+    # Windows kullanıyorsan dosya değişimini algılaması için:
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+networks:
+  auth_network:
+    external: true
