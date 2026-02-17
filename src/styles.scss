@@ -1,0 +1,82 @@
+// Bootstrap 5
+@use 'bootstrap/scss/bootstrap';
+
+// Google Font — Inter
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// ===== Global Resets & Defaults =====
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0c29;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+// ===== Scrollbar Styling =====
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.25);
+    border-radius: 3px;
+
+    &:hover {
+        background: rgba(148, 163, 184, 0.4);
+    }
+}
+
+// ===== Selection =====
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #f1f5f9;
+}
+
+// ===== Focus visible outlines =====
+:focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 2px;
+}
+
+// ===== Smooth transitions for form elements =====
+input,
+select,
+textarea,
+button {
+    font-family: inherit;
+}
+
+// ===== Custom text muted for dark theme =====
+.text-muted {
+    color: #64748b !important;
+}
+
+// ===== Link base styling =====
+a {
+    color: #a78bfa;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #c4b5fd;
+    }
+}
