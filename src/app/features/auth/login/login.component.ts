@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -15,8 +15,8 @@ import { LoginRequest } from '../../../core/models/auth.models';
 export class LoginComponent {
 
     loginForm: FormGroup;
-    isLoading = false;
-    errorMessage: string | null = null;
+    isLoading = signal(false);
+    errorMessage = signal<string>('');
     showPassword = false;
 
     constructor(
@@ -40,8 +40,8 @@ export class LoginComponent {
             return;
         }
 
-        this.isLoading = true;
-        this.errorMessage = null;
+        this.isLoading.set(true);
+        this.errorMessage.set('');
 
         const request: LoginRequest = {
             identifier: this.loginForm.value.identifier,
@@ -50,13 +50,15 @@ export class LoginComponent {
 
         this.authService.login(request).subscribe({
             next: (response) => {
-                this.isLoading = false;
+                this.isLoading.set(false);
                 // Token storage and redirect will be implemented later
                 console.log('Login successful:', response);
             },
             error: (error) => {
-                this.isLoading = false;
-                this.errorMessage = error.error?.message || 'Login failed. Please check your credentials.';
+                this.isLoading.set(false);
+                this.errorMessage.set(
+                    error.error?.message || 'Login failed. Please check your credentials.'
+                );
             }
         });
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -15,9 +15,9 @@ import { RegisterRequest } from '../../../core/models/auth.models';
 export class RegisterComponent {
 
     registerForm: FormGroup;
-    isLoading = false;
-    errorMessage: string | null = null;
-    successMessage: string | null = null;
+    isLoading = signal(false);
+    errorMessage = signal<string>('');
+    successMessage = signal<string>('');
     showPassword = false;
 
     genderOptions = [
@@ -53,21 +53,25 @@ export class RegisterComponent {
             return;
         }
 
-        this.isLoading = true;
-        this.errorMessage = null;
-        this.successMessage = null;
+        this.isLoading.set(true);
+        this.errorMessage.set('');
+        this.successMessage.set('');
 
         const request: RegisterRequest = this.registerForm.value;
 
         this.authService.register(request).subscribe({
             next: (response) => {
-                this.isLoading = false;
-                this.successMessage = response.message || 'Registration successful! You can now sign in.';
+                this.isLoading.set(false);
+                this.successMessage.set(
+                    response.message || 'Registration successful! You can now sign in.'
+                );
                 this.registerForm.reset();
             },
             error: (error) => {
-                this.isLoading = false;
-                this.errorMessage = error.error?.message || 'Registration failed. Please try again.';
+                this.isLoading.set(false);
+                this.errorMessage.set(
+                    error.error?.message || 'Registration failed. Please try again.'
+                );
             }
         });
     }

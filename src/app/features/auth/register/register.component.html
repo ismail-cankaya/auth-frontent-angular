@@ -23,30 +23,22 @@
                     <div class="card-body p-4 p-md-5">
 
                         <!-- Success Alert -->
-                        <div *ngIf="successMessage" class="alert alert-success d-flex align-items-center" role="alert">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="me-2 flex-shrink-0">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                <polyline points="22 4 12 14.01 9 11.01" />
-                            </svg>
-                            <span>{{ successMessage }}</span>
+                        @if (successMessage()) {
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <i class="bi bi-check-circle-fill flex-shrink-0 me-2"></i>
+                            <div>{{ successMessage() }}</div>
+                            <button type="button" class="btn-close ms-auto" (click)="successMessage.set('')"></button>
                         </div>
+                        }
 
                         <!-- Error Alert -->
-                        <div *ngIf="errorMessage"
-                            class="alert alert-danger alert-dismissible fade show d-flex align-items-center"
-                            role="alert">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="me-2 flex-shrink-0">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="15" y1="9" x2="9" y2="15" />
-                                <line x1="9" y1="9" x2="15" y2="15" />
-                            </svg>
-                            <span>{{ errorMessage }}</span>
-                            <button type="button" class="btn-close" (click)="errorMessage = null"></button>
+                        @if (errorMessage()) {
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                            <div>{{ errorMessage() }}</div>
+                            <button type="button" class="btn-close ms-auto" (click)="errorMessage.set('')"></button>
                         </div>
+                        }
 
                         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
@@ -65,13 +57,16 @@
                                             [class.is-invalid]="f['first_name'].touched && f['first_name'].invalid"
                                             [class.is-valid]="f['first_name'].touched && f['first_name'].valid">
                                         <label for="first_name">First Name</label>
-                                        <div *ngIf="f['first_name'].touched && f['first_name'].errors"
-                                            class="invalid-feedback">
-                                            <span *ngIf="f['first_name'].errors?.['required']">First name is
-                                                required.</span>
-                                            <span *ngIf="f['first_name'].errors?.['minlength']">Minimum 2
-                                                characters.</span>
+                                        @if (f['first_name'].touched && f['first_name'].errors) {
+                                        <div class="invalid-feedback">
+                                            @if (f['first_name'].errors['required']) {
+                                            <span>First name is required.</span>
+                                            }
+                                            @if (f['first_name'].errors['minlength']) {
+                                            <span>Minimum 2 characters.</span>
+                                            }
                                         </div>
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -81,13 +76,16 @@
                                             [class.is-invalid]="f['last_name'].touched && f['last_name'].invalid"
                                             [class.is-valid]="f['last_name'].touched && f['last_name'].valid">
                                         <label for="last_name">Last Name</label>
-                                        <div *ngIf="f['last_name'].touched && f['last_name'].errors"
-                                            class="invalid-feedback">
-                                            <span *ngIf="f['last_name'].errors?.['required']">Last name is
-                                                required.</span>
-                                            <span *ngIf="f['last_name'].errors?.['minlength']">Minimum 2
-                                                characters.</span>
+                                        @if (f['last_name'].touched && f['last_name'].errors) {
+                                        <div class="invalid-feedback">
+                                            @if (f['last_name'].errors['required']) {
+                                            <span>Last name is required.</span>
+                                            }
+                                            @if (f['last_name'].errors['minlength']) {
+                                            <span>Minimum 2 characters.</span>
+                                            }
                                         </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -100,11 +98,19 @@
                                     [class.is-valid]="f['username'].touched && f['username'].valid"
                                     autocomplete="username">
                                 <label for="username">Username</label>
-                                <div *ngIf="f['username'].touched && f['username'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['username'].errors?.['required']">Username is required.</span>
-                                    <span *ngIf="f['username'].errors?.['minlength']">Minimum 3 characters.</span>
-                                    <span *ngIf="f['username'].errors?.['maxlength']">Maximum 30 characters.</span>
+                                @if (f['username'].touched && f['username'].errors) {
+                                <div class="invalid-feedback">
+                                    @if (f['username'].errors['required']) {
+                                    <span>Username is required.</span>
+                                    }
+                                    @if (f['username'].errors['minlength']) {
+                                    <span>Minimum 3 characters.</span>
+                                    }
+                                    @if (f['username'].errors['maxlength']) {
+                                    <span>Maximum 30 characters.</span>
+                                    }
                                 </div>
+                                }
                             </div>
 
                             <!-- Step Label -->
@@ -120,10 +126,16 @@
                                     [class.is-invalid]="f['email'].touched && f['email'].invalid"
                                     [class.is-valid]="f['email'].touched && f['email'].valid" autocomplete="email">
                                 <label for="email">Email address</label>
-                                <div *ngIf="f['email'].touched && f['email'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
-                                    <span *ngIf="f['email'].errors?.['email']">Please enter a valid email.</span>
+                                @if (f['email'].touched && f['email'].errors) {
+                                <div class="invalid-feedback">
+                                    @if (f['email'].errors['required']) {
+                                    <span>Email is required.</span>
+                                    }
+                                    @if (f['email'].errors['email']) {
+                                    <span>Please enter a valid email.</span>
+                                    }
                                 </div>
+                                }
                             </div>
 
                             <!-- Password -->
@@ -136,24 +148,34 @@
                                 <label for="password">Password</label>
                                 <button type="button" class="btn btn-link password-toggle"
                                     (click)="togglePasswordVisibility()" tabindex="-1">
-                                    <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                    @if (!showPassword) {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                         <circle cx="12" cy="12" r="3" />
                                     </svg>
-                                    <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                    }
+                                    @if (showPassword) {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
                                         <path
                                             d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                                         <line x1="1" y1="1" x2="23" y2="23" />
                                     </svg>
+                                    }
                                 </button>
-                                <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['password'].errors?.['required']">Password is required.</span>
-                                    <span *ngIf="f['password'].errors?.['minlength']">Minimum 6 characters.</span>
+                                @if (f['password'].touched && f['password'].errors) {
+                                <div class="invalid-feedback">
+                                    @if (f['password'].errors['required']) {
+                                    <span>Password is required.</span>
+                                    }
+                                    @if (f['password'].errors['minlength']) {
+                                    <span>Minimum 6 characters.</span>
+                                    }
                                 </div>
+                                }
                             </div>
 
                             <!-- Step Label -->
@@ -169,10 +191,16 @@
                                     [class.is-invalid]="f['tc_no'].touched && f['tc_no'].invalid"
                                     [class.is-valid]="f['tc_no'].touched && f['tc_no'].valid" maxlength="11">
                                 <label for="tc_no">TC Kimlik No</label>
-                                <div *ngIf="f['tc_no'].touched && f['tc_no'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['tc_no'].errors?.['required']">TC Kimlik No is required.</span>
-                                    <span *ngIf="f['tc_no'].errors?.['pattern']">Must be exactly 11 digits.</span>
+                                @if (f['tc_no'].touched && f['tc_no'].errors) {
+                                <div class="invalid-feedback">
+                                    @if (f['tc_no'].errors['required']) {
+                                    <span>TC Kimlik No is required.</span>
+                                    }
+                                    @if (f['tc_no'].errors['pattern']) {
+                                    <span>Must be exactly 11 digits.</span>
+                                    }
                                 </div>
+                                }
                             </div>
 
                             <!-- Phone -->
@@ -182,11 +210,16 @@
                                     [class.is-invalid]="f['phone'].touched && f['phone'].invalid"
                                     [class.is-valid]="f['phone'].touched && f['phone'].valid" autocomplete="tel">
                                 <label for="phone">Phone Number</label>
-                                <div *ngIf="f['phone'].touched && f['phone'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['phone'].errors?.['required']">Phone number is required.</span>
-                                    <span *ngIf="f['phone'].errors?.['pattern']">Enter a valid phone number (10-15
-                                        digits).</span>
+                                @if (f['phone'].touched && f['phone'].errors) {
+                                <div class="invalid-feedback">
+                                    @if (f['phone'].errors['required']) {
+                                    <span>Phone number is required.</span>
+                                    }
+                                    @if (f['phone'].errors['pattern']) {
+                                    <span>Enter a valid phone number (10-15 digits).</span>
+                                    }
                                 </div>
+                                }
                             </div>
 
                             <!-- Birth Date & Gender Row -->
@@ -198,11 +231,13 @@
                                             [class.is-invalid]="f['birth_date'].touched && f['birth_date'].invalid"
                                             [class.is-valid]="f['birth_date'].touched && f['birth_date'].valid">
                                         <label for="birth_date">Birth Date</label>
-                                        <div *ngIf="f['birth_date'].touched && f['birth_date'].errors"
-                                            class="invalid-feedback">
-                                            <span *ngIf="f['birth_date'].errors?.['required']">Birth date is
-                                                required.</span>
+                                        @if (f['birth_date'].touched && f['birth_date'].errors) {
+                                        <div class="invalid-feedback">
+                                            @if (f['birth_date'].errors['required']) {
+                                            <span>Birth date is required.</span>
+                                            }
                                         </div>
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -211,23 +246,29 @@
                                             [class.is-invalid]="f['gender'].touched && f['gender'].invalid"
                                             [class.is-valid]="f['gender'].touched && f['gender'].valid">
                                             <option value="" disabled>Select Gender</option>
-                                            <option *ngFor="let g of genderOptions" [value]="g.value">{{ g.label }}
-                                            </option>
+                                            @for (g of genderOptions; track g.value) {
+                                            <option [value]="g.value">{{ g.label }}</option>
+                                            }
                                         </select>
                                         <label for="gender">Gender</label>
-                                        <div *ngIf="f['gender'].touched && f['gender'].errors" class="invalid-feedback">
-                                            <span *ngIf="f['gender'].errors?.['required']">Gender is required.</span>
+                                        @if (f['gender'].touched && f['gender'].errors) {
+                                        <div class="invalid-feedback">
+                                            @if (f['gender'].errors['required']) {
+                                            <span>Gender is required.</span>
+                                            }
                                         </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary w-100 btn-lg btn-submit"
-                                [disabled]="isLoading">
-                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"
-                                    role="status"></span>
-                                {{ isLoading ? 'Creating account...' : 'Create Account' }}
+                                [disabled]="isLoading()">
+                                @if (isLoading()) {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                }
+                                {{ isLoading() ? 'Creating account...' : 'Create Account' }}
                             </button>
 
                         </form>
