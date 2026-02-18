@@ -24,7 +24,7 @@ export class LoginComponent {
         private authService: AuthService
     ) {
         this.loginForm = this.fb.group({
-            email: ['', [Validators.required, Validators.email]],
+            identifier: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             rememberMe: [false]
         });
@@ -44,7 +44,7 @@ export class LoginComponent {
         this.errorMessage = null;
 
         const request: LoginRequest = {
-            email: this.loginForm.value.email,
+            identifier: this.loginForm.value.identifier,
             password: this.loginForm.value.password
         };
 

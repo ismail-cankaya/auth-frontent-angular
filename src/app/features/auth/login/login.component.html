@@ -38,14 +38,16 @@
 
                             <!-- Email Field -->
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" formControlName="email"
+                                <input type="text" class="form-control" id="identifier" formControlName="identifier"
                                     placeholder="name@example.com"
-                                    [class.is-invalid]="f['email'].touched && f['email'].invalid"
-                                    [class.is-valid]="f['email'].touched && f['email'].valid" autocomplete="email">
-                                <label for="email">Email address</label>
-                                <div *ngIf="f['email'].touched && f['email'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
-                                    <span *ngIf="f['email'].errors?.['email']">Please enter a valid email.</span>
+                                    [class.is-invalid]="f['identifier'].touched && f['identifier'].invalid"
+                                    [class.is-valid]="f['identifier'].touched && f['identifier'].valid"
+                                    autocomplete="identifier">
+                                <label for="identifier">Identifier</label>
+                                <div *ngIf="f['identifier'].touched && f['identifier'].errors" class="invalid-feedback">
+                                    <span *ngIf="f['identifier'].errors['required']">Identifier is required.</span>
+                                    <span *ngIf="f['identifier'].errors['identifier']">Please enter a valid
+                                        identifier.</span>
                                 </div>
                             </div>
 
@@ -76,8 +78,8 @@
                                     </svg>
                                 </button>
                                 <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
-                                    <span *ngIf="f['password'].errors?.['required']">Password is required.</span>
-                                    <span *ngIf="f['password'].errors?.['minlength']">Minimum 6 characters.</span>
+                                    <span *ngIf="f['password'].errors['required']">Password is required.</span>
+                                    <span *ngIf="f['password'].errors['minlength']">Minimum 6 characters.</span>
                                 </div>
                             </div>
 
