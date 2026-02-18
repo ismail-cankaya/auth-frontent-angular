@@ -2,13 +2,15 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { LoginRequest } from '../../../core/models/auth.models';
+import { LanguageSwitchComponent } from '../../../shared/components/language-switch/language-switch.component';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, RouterModule],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule, LanguageSwitchComponent],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
 })
@@ -21,7 +23,8 @@ export class LoginComponent {
 
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService
+        private authService: AuthService,
+        private translate: TranslateService
     ) {
         this.loginForm = this.fb.group({
             identifier: ['', [Validators.required]],
@@ -57,7 +60,7 @@ export class LoginComponent {
             error: (error) => {
                 this.isLoading.set(false);
                 this.errorMessage.set(
-                    error.error?.message || 'Login failed. Please check your credentials.'
+                    error.error?.message || this.translate.instant('LOGIN.ERRORS.DEFAULT')
                 );
             }
         });

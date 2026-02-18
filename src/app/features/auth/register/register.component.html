@@ -1,3 +1,5 @@
+<app-language-switch />
+
 <div class="auth-wrapper">
     <div class="container">
         <div class="row justify-content-center align-items-center py-5">
@@ -15,7 +17,7 @@
                         </svg>
                     </div>
                     <h1 class="brand-title">Auth<span>Gate</span></h1>
-                    <p class="brand-subtitle">Create your account</p>
+                    <p class="brand-subtitle">{{ 'REGISTER.SUBTITLE' | translate }}</p>
                 </div>
 
                 <!-- Register Card -->
@@ -45,7 +47,7 @@
                             <!-- Step Label -->
                             <div class="step-label mb-3">
                                 <span class="step-badge">1</span>
-                                <span class="step-text">Personal Information</span>
+                                <span class="step-text">{{ 'REGISTER.STEPS.PERSONAL' | translate }}</span>
                             </div>
 
                             <!-- Name Row -->
@@ -53,17 +55,18 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="first_name"
-                                            formControlName="first_name" placeholder="First Name"
+                                            formControlName="first_name"
+                                            [placeholder]="'REGISTER.FIRST_NAME_PLACEHOLDER' | translate"
                                             [class.is-invalid]="f['first_name'].touched && f['first_name'].invalid"
                                             [class.is-valid]="f['first_name'].touched && f['first_name'].valid">
-                                        <label for="first_name">First Name</label>
+                                        <label for="first_name">{{ 'REGISTER.FIRST_NAME_LABEL' | translate }}</label>
                                         @if (f['first_name'].touched && f['first_name'].errors) {
                                         <div class="invalid-feedback">
                                             @if (f['first_name'].errors['required']) {
-                                            <span>First name is required.</span>
+                                            <span>{{ 'REGISTER.ERRORS.FIRST_NAME_REQUIRED' | translate }}</span>
                                             }
                                             @if (f['first_name'].errors['minlength']) {
-                                            <span>Minimum 2 characters.</span>
+                                            <span>{{ 'REGISTER.ERRORS.FIRST_NAME_MINLENGTH' | translate }}</span>
                                             }
                                         </div>
                                         }
@@ -72,17 +75,18 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="last_name"
-                                            formControlName="last_name" placeholder="Last Name"
+                                            formControlName="last_name"
+                                            [placeholder]="'REGISTER.LAST_NAME_PLACEHOLDER' | translate"
                                             [class.is-invalid]="f['last_name'].touched && f['last_name'].invalid"
                                             [class.is-valid]="f['last_name'].touched && f['last_name'].valid">
-                                        <label for="last_name">Last Name</label>
+                                        <label for="last_name">{{ 'REGISTER.LAST_NAME_LABEL' | translate }}</label>
                                         @if (f['last_name'].touched && f['last_name'].errors) {
                                         <div class="invalid-feedback">
                                             @if (f['last_name'].errors['required']) {
-                                            <span>Last name is required.</span>
+                                            <span>{{ 'REGISTER.ERRORS.LAST_NAME_REQUIRED' | translate }}</span>
                                             }
                                             @if (f['last_name'].errors['minlength']) {
-                                            <span>Minimum 2 characters.</span>
+                                            <span>{{ 'REGISTER.ERRORS.LAST_NAME_MINLENGTH' | translate }}</span>
                                             }
                                         </div>
                                         }
@@ -93,21 +97,21 @@
                             <!-- Username -->
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="username" formControlName="username"
-                                    placeholder="Username"
+                                    [placeholder]="'REGISTER.USERNAME_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['username'].touched && f['username'].invalid"
                                     [class.is-valid]="f['username'].touched && f['username'].valid"
                                     autocomplete="username">
-                                <label for="username">Username</label>
+                                <label for="username">{{ 'REGISTER.USERNAME_LABEL' | translate }}</label>
                                 @if (f['username'].touched && f['username'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['username'].errors['required']) {
-                                    <span>Username is required.</span>
+                                    <span>{{ 'REGISTER.ERRORS.USERNAME_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['username'].errors['minlength']) {
-                                    <span>Minimum 3 characters.</span>
+                                    <span>{{ 'REGISTER.ERRORS.USERNAME_MINLENGTH' | translate }}</span>
                                     }
                                     @if (f['username'].errors['maxlength']) {
-                                    <span>Maximum 30 characters.</span>
+                                    <span>{{ 'REGISTER.ERRORS.USERNAME_MAXLENGTH' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -116,23 +120,23 @@
                             <!-- Step Label -->
                             <div class="step-label mb-3 mt-4">
                                 <span class="step-badge">2</span>
-                                <span class="step-text">Account Details</span>
+                                <span class="step-text">{{ 'REGISTER.STEPS.ACCOUNT' | translate }}</span>
                             </div>
 
                             <!-- Email -->
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="email" formControlName="email"
-                                    placeholder="name@example.com"
+                                    [placeholder]="'REGISTER.EMAIL_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['email'].touched && f['email'].invalid"
                                     [class.is-valid]="f['email'].touched && f['email'].valid" autocomplete="email">
-                                <label for="email">Email address</label>
+                                <label for="email">{{ 'REGISTER.EMAIL_LABEL' | translate }}</label>
                                 @if (f['email'].touched && f['email'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['email'].errors['required']) {
-                                    <span>Email is required.</span>
+                                    <span>{{ 'REGISTER.ERRORS.EMAIL_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['email'].errors['email']) {
-                                    <span>Please enter a valid email.</span>
+                                    <span>{{ 'REGISTER.ERRORS.EMAIL_INVALID' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -141,11 +145,12 @@
                             <!-- Password -->
                             <div class="form-floating mb-3 position-relative">
                                 <input [type]="showPassword ? 'text' : 'password'" class="form-control pe-5"
-                                    id="password" formControlName="password" placeholder="Password"
+                                    id="password" formControlName="password"
+                                    [placeholder]="'REGISTER.PASSWORD_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['password'].touched && f['password'].invalid"
                                     [class.is-valid]="f['password'].touched && f['password'].valid"
                                     autocomplete="new-password">
-                                <label for="password">Password</label>
+                                <label for="password">{{ 'REGISTER.PASSWORD_LABEL' | translate }}</label>
                                 <button type="button" class="btn btn-link password-toggle"
                                     (click)="togglePasswordVisibility()" tabindex="-1">
                                     @if (!showPassword) {
@@ -169,10 +174,10 @@
                                 @if (f['password'].touched && f['password'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['password'].errors['required']) {
-                                    <span>Password is required.</span>
+                                    <span>{{ 'REGISTER.ERRORS.PASSWORD_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['password'].errors['minlength']) {
-                                    <span>Minimum 6 characters.</span>
+                                    <span>{{ 'REGISTER.ERRORS.PASSWORD_MINLENGTH' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -181,23 +186,23 @@
                             <!-- Step Label -->
                             <div class="step-label mb-3 mt-4">
                                 <span class="step-badge">3</span>
-                                <span class="step-text">Identity & Contact</span>
+                                <span class="step-text">{{ 'REGISTER.STEPS.IDENTITY' | translate }}</span>
                             </div>
 
                             <!-- TC No -->
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="tc_no" formControlName="tc_no"
-                                    placeholder="TC Kimlik No"
+                                    [placeholder]="'REGISTER.TC_NO_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['tc_no'].touched && f['tc_no'].invalid"
                                     [class.is-valid]="f['tc_no'].touched && f['tc_no'].valid" maxlength="11">
-                                <label for="tc_no">TC Kimlik No</label>
+                                <label for="tc_no">{{ 'REGISTER.TC_NO_LABEL' | translate }}</label>
                                 @if (f['tc_no'].touched && f['tc_no'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['tc_no'].errors['required']) {
-                                    <span>TC Kimlik No is required.</span>
+                                    <span>{{ 'REGISTER.ERRORS.TC_NO_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['tc_no'].errors['pattern']) {
-                                    <span>Must be exactly 11 digits.</span>
+                                    <span>{{ 'REGISTER.ERRORS.TC_NO_PATTERN' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -206,17 +211,17 @@
                             <!-- Phone -->
                             <div class="form-floating mb-3">
                                 <input type="tel" class="form-control" id="phone" formControlName="phone"
-                                    placeholder="+90 5XX XXX XXXX"
+                                    [placeholder]="'REGISTER.PHONE_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['phone'].touched && f['phone'].invalid"
                                     [class.is-valid]="f['phone'].touched && f['phone'].valid" autocomplete="tel">
-                                <label for="phone">Phone Number</label>
+                                <label for="phone">{{ 'REGISTER.PHONE_LABEL' | translate }}</label>
                                 @if (f['phone'].touched && f['phone'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['phone'].errors['required']) {
-                                    <span>Phone number is required.</span>
+                                    <span>{{ 'REGISTER.ERRORS.PHONE_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['phone'].errors['pattern']) {
-                                    <span>Enter a valid phone number (10-15 digits).</span>
+                                    <span>{{ 'REGISTER.ERRORS.PHONE_PATTERN' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -227,14 +232,15 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="date" class="form-control" id="birth_date"
-                                            formControlName="birth_date" placeholder="Birth Date"
+                                            formControlName="birth_date"
+                                            [placeholder]="'REGISTER.BIRTH_DATE_PLACEHOLDER' | translate"
                                             [class.is-invalid]="f['birth_date'].touched && f['birth_date'].invalid"
                                             [class.is-valid]="f['birth_date'].touched && f['birth_date'].valid">
-                                        <label for="birth_date">Birth Date</label>
+                                        <label for="birth_date">{{ 'REGISTER.BIRTH_DATE_LABEL' | translate }}</label>
                                         @if (f['birth_date'].touched && f['birth_date'].errors) {
                                         <div class="invalid-feedback">
                                             @if (f['birth_date'].errors['required']) {
-                                            <span>Birth date is required.</span>
+                                            <span>{{ 'REGISTER.ERRORS.BIRTH_DATE_REQUIRED' | translate }}</span>
                                             }
                                         </div>
                                         }
@@ -245,16 +251,17 @@
                                         <select class="form-select" id="gender" formControlName="gender"
                                             [class.is-invalid]="f['gender'].touched && f['gender'].invalid"
                                             [class.is-valid]="f['gender'].touched && f['gender'].valid">
-                                            <option value="" disabled>Select Gender</option>
-                                            @for (g of genderOptions; track g.value) {
-                                            <option [value]="g.value">{{ g.label }}</option>
-                                            }
+                                            <option value="" disabled>{{ 'REGISTER.GENDER_PLACEHOLDER' | translate }}
+                                            </option>
+                                            <option value="male">{{ 'REGISTER.GENDER_MALE' | translate }}</option>
+                                            <option value="female">{{ 'REGISTER.GENDER_FEMALE' | translate }}</option>
+                                            <option value="other">{{ 'REGISTER.GENDER_OTHER' | translate }}</option>
                                         </select>
-                                        <label for="gender">Gender</label>
+                                        <label for="gender">{{ 'REGISTER.GENDER_LABEL' | translate }}</label>
                                         @if (f['gender'].touched && f['gender'].errors) {
                                         <div class="invalid-feedback">
                                             @if (f['gender'].errors['required']) {
-                                            <span>Gender is required.</span>
+                                            <span>{{ 'REGISTER.ERRORS.GENDER_REQUIRED' | translate }}</span>
                                             }
                                         </div>
                                         }
@@ -268,20 +275,22 @@
                                 @if (isLoading()) {
                                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                                 }
-                                {{ isLoading() ? 'Creating account...' : 'Create Account' }}
+                                {{ isLoading() ? ('REGISTER.SUBMITTING' | translate) : ('REGISTER.SUBMIT' | translate)
+                                }}
                             </button>
 
                         </form>
 
                         <!-- Divider -->
                         <div class="divider my-4">
-                            <span>or</span>
+                            <span>{{ 'COMMON.OR' | translate }}</span>
                         </div>
 
                         <!-- Login Link -->
                         <div class="text-center">
-                            <span class="text-muted">Already have an account? </span>
-                            <a routerLink="/login" class="login-link fw-semibold">Sign in</a>
+                            <span class="text-muted">{{ 'REGISTER.HAS_ACCOUNT' | translate }} </span>
+                            <a routerLink="/login" class="login-link fw-semibold">{{ 'REGISTER.SIGN_IN' | translate
+                                }}</a>
                         </div>
 
                     </div>
@@ -289,7 +298,7 @@
 
                 <!-- Footer -->
                 <div class="text-center mt-4 mb-3">
-                    <small class="text-muted">&copy; 2026 AuthGate. All rights reserved.</small>
+                    <small class="text-muted">{{ 'COMMON.FOOTER' | translate }}</small>
                 </div>
 
             </div>

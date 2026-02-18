@@ -11,6 +11,9 @@ RUN npm install -g @angular/cli
 # Kodları kopyala
 COPY . .
 
+# ÖNEMLİ: Google Analytics sorusunu kapat (Sormadan geçsin, donmayı engeller)
+RUN ng analytics off
+
 # 4200 portunu aç
 EXPOSE 4200
 

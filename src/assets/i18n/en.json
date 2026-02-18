@@ -1,0 +1,80 @@
+{
+    "COMMON": {
+        "OR": "or",
+        "FOOTER": "© 2026 AuthGate. All rights reserved."
+    },
+    "LOGIN": {
+        "SUBTITLE": "Sign in to your account",
+        "IDENTIFIER_LABEL": "Username / Email",
+        "IDENTIFIER_PLACEHOLDER": "name@example.com",
+        "PASSWORD_LABEL": "Password",
+        "PASSWORD_PLACEHOLDER": "Password",
+        "REMEMBER_ME": "Remember me",
+        "FORGOT_PASSWORD": "Forgot password?",
+        "SUBMIT": "Sign In",
+        "SUBMITTING": "Signing in...",
+        "NO_ACCOUNT": "Don't have an account?",
+        "CREATE_ACCOUNT": "Create account",
+        "ERRORS": {
+            "IDENTIFIER_REQUIRED": "Identifier is required.",
+            "IDENTIFIER_INVALID": "Please enter a valid identifier.",
+            "PASSWORD_REQUIRED": "Password is required.",
+            "PASSWORD_MINLENGTH": "Minimum 6 characters.",
+            "DEFAULT": "Login failed. Please check your credentials."
+        }
+    },
+    "REGISTER": {
+        "SUBTITLE": "Create your account",
+        "STEPS": {
+            "PERSONAL": "Personal Information",
+            "ACCOUNT": "Account Details",
+            "IDENTITY": "Identity & Contact"
+        },
+        "FIRST_NAME_LABEL": "First Name",
+        "FIRST_NAME_PLACEHOLDER": "First Name",
+        "LAST_NAME_LABEL": "Last Name",
+        "LAST_NAME_PLACEHOLDER": "Last Name",
+        "USERNAME_LABEL": "Username",
+        "USERNAME_PLACEHOLDER": "Username",
+        "EMAIL_LABEL": "Email address",
+        "EMAIL_PLACEHOLDER": "name@example.com",
+        "PASSWORD_LABEL": "Password",
+        "PASSWORD_PLACEHOLDER": "Password",
+        "TC_NO_LABEL": "TC Kimlik No",
+        "TC_NO_PLACEHOLDER": "TC Kimlik No",
+        "PHONE_LABEL": "Phone Number",
+        "PHONE_PLACEHOLDER": "+90 5XX XXX XXXX",
+        "BIRTH_DATE_LABEL": "Birth Date",
+        "BIRTH_DATE_PLACEHOLDER": "Birth Date",
+        "GENDER_LABEL": "Gender",
+        "GENDER_PLACEHOLDER": "Select Gender",
+        "GENDER_MALE": "Male",
+        "GENDER_FEMALE": "Female",
+        "GENDER_OTHER": "Other",
+        "SUBMIT": "Create Account",
+        "SUBMITTING": "Creating account...",
+        "HAS_ACCOUNT": "Already have an account?",
+        "SIGN_IN": "Sign in",
+        "ERRORS": {
+            "FIRST_NAME_REQUIRED": "First name is required.",
+            "FIRST_NAME_MINLENGTH": "Minimum 2 characters.",
+            "LAST_NAME_REQUIRED": "Last name is required.",
+            "LAST_NAME_MINLENGTH": "Minimum 2 characters.",
+            "USERNAME_REQUIRED": "Username is required.",
+            "USERNAME_MINLENGTH": "Minimum 3 characters.",
+            "USERNAME_MAXLENGTH": "Maximum 30 characters.",
+            "EMAIL_REQUIRED": "Email is required.",
+            "EMAIL_INVALID": "Please enter a valid email.",
+            "PASSWORD_REQUIRED": "Password is required.",
+            "PASSWORD_MINLENGTH": "Minimum 6 characters.",
+            "TC_NO_REQUIRED": "TC Kimlik No is required.",
+            "TC_NO_PATTERN": "Must be exactly 11 digits.",
+            "PHONE_REQUIRED": "Phone number is required.",
+            "PHONE_PATTERN": "Enter a valid phone number (10-15 digits).",
+            "BIRTH_DATE_REQUIRED": "Birth date is required.",
+            "GENDER_REQUIRED": "Gender is required.",
+            "DEFAULT": "Registration failed. Please try again.",
+            "SUCCESS": "Registration successful! You can now sign in."
+        }
+    }
+}

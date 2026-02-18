@@ -2,13 +2,15 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { RegisterRequest } from '../../../core/models/auth.models';
+import { LanguageSwitchComponent } from '../../../shared/components/language-switch/language-switch.component';
 
 @Component({
     selector: 'app-register',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, RouterModule],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule, LanguageSwitchComponent],
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss'
 })
@@ -20,15 +22,10 @@ export class RegisterComponent {
     successMessage = signal<string>('');
     showPassword = false;
 
-    genderOptions = [
-        { value: 'male', label: 'Male' },
-        { value: 'female', label: 'Female' },
-        { value: 'other', label: 'Other' }
-    ];
-
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService
+        private authService: AuthService,
+        private translate: TranslateService
     ) {
         this.registerForm = this.fb.group({
             first_name: ['', [Validators.required, Validators.minLength(2)]],
@@ -63,14 +60,14 @@ export class RegisterComponent {
             next: (response) => {
                 this.isLoading.set(false);
                 this.successMessage.set(
-                    response.message || 'Registration successful! You can now sign in.'
+                    response.message || this.translate.instant('REGISTER.ERRORS.SUCCESS')
                 );
                 this.registerForm.reset();
             },
             error: (error) => {
                 this.isLoading.set(false);
                 this.errorMessage.set(
-                    error.error?.message || 'Registration failed. Please try again.'
+                    error.error?.message || this.translate.instant('REGISTER.ERRORS.DEFAULT')
                 );
             }
         });

@@ -1,3 +1,5 @@
+<app-language-switch />
+
 <div class="auth-wrapper">
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
@@ -12,7 +14,7 @@
                         </svg>
                     </div>
                     <h1 class="brand-title">Auth<span>Gate</span></h1>
-                    <p class="brand-subtitle">Sign in to your account</p>
+                    <p class="brand-subtitle">{{ 'LOGIN.SUBTITLE' | translate }}</p>
                 </div>
 
                 <!-- Login Card -->
@@ -30,21 +32,21 @@
 
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-                            <!-- Email Field -->
+                            <!-- Identifier Field -->
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="identifier" formControlName="identifier"
-                                    placeholder="name@example.com"
+                                    [placeholder]="'LOGIN.IDENTIFIER_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['identifier'].touched && f['identifier'].invalid"
                                     [class.is-valid]="f['identifier'].touched && f['identifier'].valid"
                                     autocomplete="identifier">
-                                <label for="identifier">Identifier</label>
+                                <label for="identifier">{{ 'LOGIN.IDENTIFIER_LABEL' | translate }}</label>
                                 @if (f['identifier'].touched && f['identifier'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['identifier'].errors['required']) {
-                                    <span>Identifier is required.</span>
+                                    <span>{{ 'LOGIN.ERRORS.IDENTIFIER_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['identifier'].errors['identifier']) {
-                                    <span>Please enter a valid identifier.</span>
+                                    <span>{{ 'LOGIN.ERRORS.IDENTIFIER_INVALID' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -53,11 +55,12 @@
                             <!-- Password Field -->
                             <div class="form-floating mb-3 position-relative">
                                 <input [type]="showPassword ? 'text' : 'password'" class="form-control pe-5"
-                                    id="password" formControlName="password" placeholder="Password"
+                                    id="password" formControlName="password"
+                                    [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
                                     [class.is-invalid]="f['password'].touched && f['password'].invalid"
                                     [class.is-valid]="f['password'].touched && f['password'].valid"
                                     autocomplete="current-password">
-                                <label for="password">Password</label>
+                                <label for="password">{{ 'LOGIN.PASSWORD_LABEL' | translate }}</label>
                                 <button type="button" class="btn btn-link password-toggle"
                                     (click)="togglePasswordVisibility()" tabindex="-1">
                                     <!-- Eye Icon -->
@@ -83,10 +86,10 @@
                                 @if (f['password'].touched && f['password'].errors) {
                                 <div class="invalid-feedback">
                                     @if (f['password'].errors['required']) {
-                                    <span>Password is required.</span>
+                                    <span>{{ 'LOGIN.ERRORS.PASSWORD_REQUIRED' | translate }}</span>
                                     }
                                     @if (f['password'].errors['minlength']) {
-                                    <span>Minimum 6 characters.</span>
+                                    <span>{{ 'LOGIN.ERRORS.PASSWORD_MINLENGTH' | translate }}</span>
                                     }
                                 </div>
                                 }
@@ -97,9 +100,10 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="rememberMe"
                                         formControlName="rememberMe">
-                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    <label class="form-check-label" for="rememberMe">{{ 'LOGIN.REMEMBER_ME' | translate
+                                        }}</label>
                                 </div>
-                                <a href="#" class="forgot-link">Forgot password?</a>
+                                <a href="#" class="forgot-link">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
                             </div>
 
                             <!-- Submit Button -->
@@ -108,20 +112,21 @@
                                 @if (isLoading()) {
                                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                                 }
-                                {{ isLoading() ? 'Signing in...' : 'Sign In' }}
+                                {{ isLoading() ? ('LOGIN.SUBMITTING' | translate) : ('LOGIN.SUBMIT' | translate) }}
                             </button>
 
                         </form>
 
                         <!-- Divider -->
                         <div class="divider my-4">
-                            <span>or</span>
+                            <span>{{ 'COMMON.OR' | translate }}</span>
                         </div>
 
                         <!-- Register Link -->
                         <div class="text-center">
-                            <span class="text-muted">Don't have an account? </span>
-                            <a routerLink="/register" class="register-link fw-semibold">Create account</a>
+                            <span class="text-muted">{{ 'LOGIN.NO_ACCOUNT' | translate }} </span>
+                            <a routerLink="/register" class="register-link fw-semibold">{{ 'LOGIN.CREATE_ACCOUNT' |
+                                translate }}</a>
                         </div>
 
                     </div>
@@ -129,7 +134,7 @@
 
                 <!-- Footer -->
                 <div class="text-center mt-4">
-                    <small class="text-muted">&copy; 2026 AuthGate. All rights reserved.</small>
+                    <small class="text-muted">{{ 'COMMON.FOOTER' | translate }}</small>
                 </div>
 
             </div>

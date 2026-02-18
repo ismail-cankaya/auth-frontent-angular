@@ -1,0 +1,80 @@
+{
+    "COMMON": {
+        "OR": "veya",
+        "FOOTER": "© 2026 AuthGate. Tüm hakları saklıdır."
+    },
+    "LOGIN": {
+        "SUBTITLE": "Hesabınıza giriş yapın",
+        "IDENTIFIER_LABEL": "Kullanıcı Adı / E-posta",
+        "IDENTIFIER_PLACEHOLDER": "ornek@eposta.com",
+        "PASSWORD_LABEL": "Şifre",
+        "PASSWORD_PLACEHOLDER": "Şifre",
+        "REMEMBER_ME": "Beni hatırla",
+        "FORGOT_PASSWORD": "Şifrenizi mi unuttunuz?",
+        "SUBMIT": "Giriş Yap",
+        "SUBMITTING": "Giriş yapılıyor...",
+        "NO_ACCOUNT": "Hesabınız yok mu?",
+        "CREATE_ACCOUNT": "Hesap oluştur",
+        "ERRORS": {
+            "IDENTIFIER_REQUIRED": "Kullanıcı adı veya e-posta gereklidir.",
+            "IDENTIFIER_INVALID": "Geçerli bir kullanıcı adı veya e-posta girin.",
+            "PASSWORD_REQUIRED": "Şifre gereklidir.",
+            "PASSWORD_MINLENGTH": "En az 6 karakter olmalıdır.",
+            "DEFAULT": "Giriş başarısız. Lütfen bilgilerinizi kontrol edin."
+        }
+    },
+    "REGISTER": {
+        "SUBTITLE": "Hesabınızı oluşturun",
+        "STEPS": {
+            "PERSONAL": "Kişisel Bilgiler",
+            "ACCOUNT": "Hesap Detayları",
+            "IDENTITY": "Kimlik & İletişim"
+        },
+        "FIRST_NAME_LABEL": "Ad",
+        "FIRST_NAME_PLACEHOLDER": "Ad",
+        "LAST_NAME_LABEL": "Soyad",
+        "LAST_NAME_PLACEHOLDER": "Soyad",
+        "USERNAME_LABEL": "Kullanıcı Adı",
+        "USERNAME_PLACEHOLDER": "Kullanıcı Adı",
+        "EMAIL_LABEL": "E-posta adresi",
+        "EMAIL_PLACEHOLDER": "ornek@eposta.com",
+        "PASSWORD_LABEL": "Şifre",
+        "PASSWORD_PLACEHOLDER": "Şifre",
+        "TC_NO_LABEL": "TC Kimlik No",
+        "TC_NO_PLACEHOLDER": "TC Kimlik No",
+        "PHONE_LABEL": "Telefon Numarası",
+        "PHONE_PLACEHOLDER": "+90 5XX XXX XXXX",
+        "BIRTH_DATE_LABEL": "Doğum Tarihi",
+        "BIRTH_DATE_PLACEHOLDER": "Doğum Tarihi",
+        "GENDER_LABEL": "Cinsiyet",
+        "GENDER_PLACEHOLDER": "Cinsiyet Seçin",
+        "GENDER_MALE": "Erkek",
+        "GENDER_FEMALE": "Kadın",
+        "GENDER_OTHER": "Diğer",
+        "SUBMIT": "Hesap Oluştur",
+        "SUBMITTING": "Hesap oluşturuluyor...",
+        "HAS_ACCOUNT": "Zaten hesabınız var mı?",
+        "SIGN_IN": "Giriş yap",
+        "ERRORS": {
+            "FIRST_NAME_REQUIRED": "Ad gereklidir.",
+            "FIRST_NAME_MINLENGTH": "En az 2 karakter olmalıdır.",
+            "LAST_NAME_REQUIRED": "Soyad gereklidir.",
+            "LAST_NAME_MINLENGTH": "En az 2 karakter olmalıdır.",
+            "USERNAME_REQUIRED": "Kullanıcı adı gereklidir.",
+            "USERNAME_MINLENGTH": "En az 3 karakter olmalıdır.",
+            "USERNAME_MAXLENGTH": "En fazla 30 karakter olmalıdır.",
+            "EMAIL_REQUIRED": "E-posta gereklidir.",
+            "EMAIL_INVALID": "Geçerli bir e-posta adresi girin.",
+            "PASSWORD_REQUIRED": "Şifre gereklidir.",
+            "PASSWORD_MINLENGTH": "En az 6 karakter olmalıdır.",
+            "TC_NO_REQUIRED": "TC Kimlik No gereklidir.",
+            "TC_NO_PATTERN": "TC Kimlik No 11 haneli olmalıdır.",
+            "PHONE_REQUIRED": "Telefon numarası gereklidir.",
+            "PHONE_PATTERN": "Geçerli bir telefon numarası girin (10-15 hane).",
+            "BIRTH_DATE_REQUIRED": "Doğum tarihi gereklidir.",
+            "GENDER_REQUIRED": "Cinsiyet seçimi gereklidir.",
+            "DEFAULT": "Kayıt başarısız. Lütfen tekrar deneyin.",
+            "SUCCESS": "Kayıt başarılı! Şimdi giriş yapabilirsiniz."
+        }
+    }
+}
