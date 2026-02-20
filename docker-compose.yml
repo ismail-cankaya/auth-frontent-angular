@@ -4,8 +4,6 @@ services:
   auth-ui:
     build: .
     container_name: auth-ui
-    ports:
-      - "4200:4200"
     volumes:
       - .:/app
       - /app/node_modules
